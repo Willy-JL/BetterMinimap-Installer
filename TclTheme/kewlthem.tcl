@@ -5,7 +5,7 @@
 
 # kewlthem, yea this is Equilux edited
 namespace eval ttk::theme::kewlthem {
-    
+
     # Widget colors
     variable colors
     array set colors {
@@ -19,7 +19,7 @@ namespace eval ttk::theme::kewlthem {
         -focuscolor     "#181818"
         -checklight     "#e6e6e6"
     }
-    
+
     # Function to load images from subdirectory
     variable directory
     # Subdirectory /equilux
@@ -30,7 +30,7 @@ namespace eval ttk::theme::kewlthem {
         set img [file tail [file rootname $file]]
         set images($img) [image create photo -file $file -format png]
     }
-    
+
     # Create a new ttk::style
     ttk::style theme create kewlthem -parent default -settings {
         # Configure basic style settings
@@ -44,12 +44,12 @@ namespace eval ttk::theme::kewlthem {
             -font TkDefaultFont \
             -borderwidth 1 \
             -focuscolor $colors(-focuscolor)
-        
+
         # Map disabled colors to disabledfg
         ttk::style map . -foreground [list disabled $colors(-disabledfg)]
-        
+
         # WIDGET LAYOUTS
-        
+
         ttk::style layout TButton {
             Button.button -children {
                 Button.focus -children {
@@ -123,7 +123,7 @@ namespace eval ttk::theme::kewlthem {
         }
 
         # Style elements
-        
+
         # Button
         ttk::style element create Button.button image [list $images(button) \
                 pressed     $images(button-active) \
@@ -311,4 +311,3 @@ namespace eval ttk::theme::kewlthem {
 
 variable version 1.0
 package provide ttk::theme::kewlthem $version
-

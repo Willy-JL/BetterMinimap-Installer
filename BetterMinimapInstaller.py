@@ -146,15 +146,15 @@ def setup_variables():
 
 def make_inkwidget():
     inkwidget = (inkwidget_chunks[0] + settings["width1"] + inkwidget_chunks[1] + settings["height1"] +
-                inkwidget_chunks[2] + settings["visionRadiusCombat"] + inkwidget_chunks[3] + settings["maybeWidth5"] + 
-                inkwidget_chunks[4] + settings["maybeHeight5"] + inkwidget_chunks[5] + settings["visionRadiusCombat2"] + 
-                inkwidget_chunks[6] + settings["width2"] + inkwidget_chunks[7] + settings["height2"] + 
-                inkwidget_chunks[8] + settings["width3"] + inkwidget_chunks[9] + settings["height3"] + 
-                inkwidget_chunks[10] + settings["visionRadiusQuestArea1"] + inkwidget_chunks[11] + settings["visionRadiusQuestArea2"] + 
-                inkwidget_chunks[12] + settings["visionRadiusCombat3"] + inkwidget_chunks[13] + settings["width4"] + 
-                inkwidget_chunks[14] + settings["height4"] + inkwidget_chunks[15] + settings["width5"] + 
-                inkwidget_chunks[16] + settings["height5"] + inkwidget_chunks[17] + settings["visionRadiusVehicle"] + 
-                inkwidget_chunks[18] + settings["visionRadiusSecurityArea"] + inkwidget_chunks[19] + settings["visionRadiusInterior"] + 
+                inkwidget_chunks[2] + settings["visionRadiusCombat"] + inkwidget_chunks[3] + settings["maybeWidth5"] +
+                inkwidget_chunks[4] + settings["maybeHeight5"] + inkwidget_chunks[5] + settings["visionRadiusCombat2"] +
+                inkwidget_chunks[6] + settings["width2"] + inkwidget_chunks[7] + settings["height2"] +
+                inkwidget_chunks[8] + settings["width3"] + inkwidget_chunks[9] + settings["height3"] +
+                inkwidget_chunks[10] + settings["visionRadiusQuestArea1"] + inkwidget_chunks[11] + settings["visionRadiusQuestArea2"] +
+                inkwidget_chunks[12] + settings["visionRadiusCombat3"] + inkwidget_chunks[13] + settings["width4"] +
+                inkwidget_chunks[14] + settings["height4"] + inkwidget_chunks[15] + settings["width5"] +
+                inkwidget_chunks[16] + settings["height5"] + inkwidget_chunks[17] + settings["visionRadiusVehicle"] +
+                inkwidget_chunks[18] + settings["visionRadiusSecurityArea"] + inkwidget_chunks[19] + settings["visionRadiusInterior"] +
                 inkwidget_chunks[20] + settings["visionRadiusExterior"] + inkwidget_chunks[21])
     pathlib.Path('ToArchive/base/gameplay/gui/widgets/minimap').mkdir(parents=True, exist_ok=True)
     with open('ToArchive/base/gameplay/gui/widgets/minimap/minimap.inkwidget', 'wb') as f:
