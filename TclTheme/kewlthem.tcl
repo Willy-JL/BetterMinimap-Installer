@@ -10,13 +10,13 @@ namespace eval ttk::theme::kewlthem {
     variable colors
     array set colors {
         -fg             "#a6a6a6"
-        -bg             "#181818"
+        -bg             "#0A0A0A"
         -disabledbg     "#2e2e2e"
         -disabledfg     "#333333"
         -selectbg       "#414141"
         -selectfg       "#a6a6a6"
         -window         "#373737"
-        -focuscolor     "#181818"
+        -focuscolor     "#0A0A0A"
         -checklight     "#e6e6e6"
     }
 
