@@ -200,7 +200,8 @@ def extract_inkwidget():
             self_dir / "WolvenKit.CLI/WolvenKit.CLI.exe", "unbundle",
             "--path", cp2077_path / "archive/pc/content/basegame_1_engine.archive",
             "--outpath", self_dir / "Temp",
-            "--hash", "7622623606735548588"  # base\gameplay\gui\widgets\minimap\minimap.inkwidget
+            "--hash", "7622623606735548588",  # base\gameplay\gui\widgets\minimap\minimap.inkwidget
+            creationflags=subprocess.CREATE_NO_WINDOW
         )
         wait_proc(extract_proc)
         extract_log = proc_log(extract_proc)
@@ -435,7 +436,8 @@ def pack_archive():
         pack_proc = run_proc(
             self_dir / "WolvenKit.CLI/WolvenKit.CLI.exe", "pack",
             "--path", self_dir / "Temp",
-            "--outpath", self_dir / "Temp"
+            "--outpath", self_dir / "Temp",
+            creationflags=subprocess.CREATE_NO_WINDOW
         )
         wait_proc(pack_proc)
         pack_log = proc_log(pack_proc)
