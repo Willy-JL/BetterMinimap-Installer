@@ -1,0 +1,70 @@
+name: Package
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  Build:
+
+    name: Build
+    runs-on: windows-2019
+    if: "contains(github.event.head_commit.message, '+ PACKAGE')"
+
+    steps:
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9.10'
+
+      - name: Set Git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+
+      - name: Clone cx_Freeze source
+        uses: actions/checkout@v2
+        with:
+          repository: 'marcelotduarte/cx_Freeze'
+          ref: '6.10'
+          path: './cx_Freeze'
+
+      - name: Build cx_Freeze bootloader
+        run: |
+          cd ./cx_Freeze
+          python -m pip install -e .
+
+      - name: Clone repo
+        uses: actions/checkout@v2
+        with:
+          path: './src'
+
+      - name: Build
+        run: |
+          cd ./src
+          python -m pip install -r requirements.txt
+          ./build.bat
+
+      - name: Get short SHA string
+        uses: benjlevesque/short-sha@v1.2
+        id: short-sha
+        with:
+          length: 7
+
+      - name: Zip package
+        shell: cmd
+        run: 7z a -r ./BetterMinimap-Installer-${{ steps.short-sha.outputs.sha }}.zip ./src/dist/*
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: BetterMinimap-Installer-${{ steps.short-sha.outputs.sha }}
+          path: ./BetterMinimap-Installer-${{ steps.short-sha.outputs.sha }}.zip
+
+      - name: Purge old artifacts
+        uses: kolpav/purge-artifacts-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          expire-in: 0

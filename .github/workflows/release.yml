@@ -1,0 +1,70 @@
+name: Build Release Package
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+
+  Build:
+
+    name: Build
+    runs-on: windows-2019
+
+    steps:
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9.10'
+
+      - name: Set Git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+
+      - name: Clone cx_Freeze source
+        uses: actions/checkout@v2
+        with:
+          repository: 'marcelotduarte/cx_Freeze'
+          ref: '6.10'
+          path: './cx_Freeze'
+
+      - name: Build cx_Freeze bootloader
+        run: |
+          cd ./cx_Freeze
+          python -m pip install -e .
+
+      - name: Clone repo
+        uses: actions/checkout@v2
+        with:
+          path: './src'
+
+      - name: Build
+        run: |
+          cd ./src
+          python -m pip install -r requirements.txt
+          ./build.bat
+
+      - name: Zip package
+        shell: cmd
+        run: 7z a -r ./BetterMinimap-Installer-v${{ github.event.release.tag_name }}.zip ./src/dist/*
+
+      - name: Publish package
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: ./BetterMinimap-Installer-v${{ github.event.release.tag_name }}.zip
+
+      - name: Purge old artifacts
+        uses: kolpav/purge-artifacts-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          expire-in: 0
+
+      - name: Delete skipped workflow runs
+        uses: Willy-JL/delete-skipped-workflow-runs@main
+        with:
+          retain_days: 0
+          keep_minimum_runs: 0
