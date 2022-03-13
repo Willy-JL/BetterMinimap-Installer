@@ -5,7 +5,7 @@ set dotnet_url=https://download.visualstudio.microsoft.com/download/pr/f3eaf689-
 
 cxfreeze ^
     --base-name Win32GUI ^
-    --target-name BetterMinimap-installer ^
+    --target-name BetterMinimap-Installer ^
     --uac-admin ^
     --target-dir dist ^
     --compress ^
