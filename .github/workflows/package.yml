@@ -55,13 +55,13 @@ jobs:
 
       - name: Zip package
         shell: cmd
-        run: 7z a -r ./BetterMinimap-Installer-${{ steps.short-sha.outputs.sha }}.zip ./src/dist/*
+        run: 7z a -r ./${{ github.event.repository.name }}-${{ steps.short-sha.outputs.sha }}.zip ./src/dist/*
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: BetterMinimap-Installer-${{ steps.short-sha.outputs.sha }}
-          path: ./BetterMinimap-Installer-${{ steps.short-sha.outputs.sha }}.zip
+          name: ${{ github.event.repository.name }}-${{ steps.short-sha.outputs.sha }}
+          path: ./${{ github.event.repository.name }}-${{ steps.short-sha.outputs.sha }}.zip
 
       - name: Purge old artifacts
         uses: kolpav/purge-artifacts-action@v1

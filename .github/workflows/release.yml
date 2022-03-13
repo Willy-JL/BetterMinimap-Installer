@@ -48,14 +48,14 @@ jobs:
 
       - name: Zip package
         shell: cmd
-        run: 7z a -r ./BetterMinimap-Installer-v${{ github.event.release.tag_name }}.zip ./src/dist/*
+        run: 7z a -r ./${{ github.event.repository.name }}-v${{ github.event.release.tag_name }}.zip ./src/dist/*
 
       - name: Publish package
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: ./BetterMinimap-Installer-v${{ github.event.release.tag_name }}.zip
+          files: ./${{ github.event.repository.name }}-v${{ github.event.release.tag_name }}.zip
 
       - name: Purge old artifacts
         uses: kolpav/purge-artifacts-action@v1
