@@ -591,13 +591,13 @@ def update_disabled_buttons(disable_all=False):
         root.bigger_minimap_check["state"] = "disabled"
         root.transparent_minimap_check["state"] = "disabled"
         root.no_minimap_border_check["state"] = "disabled"
-        root.veh_low_zoom_radio["state"] = "disabled"
-        root.veh_normal_zoom_radio["state"] = "disabled"
-        root.veh_high_zoom_radio["state"] = "disabled"
+        root.veh_slight_zoom_radio["state"] = "disabled"
+        root.veh_medium_zoom_radio["state"] = "disabled"
+        root.veh_big_zoom_radio["state"] = "disabled"
         root.veh_ultra_zoom_radio["state"] = "disabled"
-        root.ped_low_zoom_radio["state"] = "disabled"
-        root.ped_normal_zoom_radio["state"] = "disabled"
-        root.ped_high_zoom_radio["state"] = "disabled"
+        root.ped_slight_zoom_radio["state"] = "disabled"
+        root.ped_medium_zoom_radio["state"] = "disabled"
+        root.ped_big_zoom_radio["state"] = "disabled"
         root.ped_ultra_zoom_radio["state"] = "disabled"
         root.install_btn["state"] = "disabled"
         root.uninstall_btn["state"] = "disabled"
@@ -607,13 +607,13 @@ def update_disabled_buttons(disable_all=False):
         root.bigger_minimap_check["state"] = "normal"
         root.transparent_minimap_check["state"] = "normal"
         root.no_minimap_border_check["state"] = "normal"
-        root.veh_low_zoom_radio["state"] = "normal"
-        root.veh_normal_zoom_radio["state"] = "normal"
-        root.veh_high_zoom_radio["state"] = "normal"
+        root.veh_slight_zoom_radio["state"] = "normal"
+        root.veh_medium_zoom_radio["state"] = "normal"
+        root.veh_big_zoom_radio["state"] = "normal"
         root.veh_ultra_zoom_radio["state"] = "normal"
-        root.ped_low_zoom_radio["state"] = "normal"
-        root.ped_normal_zoom_radio["state"] = "normal"
-        root.ped_high_zoom_radio["state"] = "normal"
+        root.ped_slight_zoom_radio["state"] = "normal"
+        root.ped_medium_zoom_radio["state"] = "normal"
+        root.ped_big_zoom_radio["state"] = "normal"
         root.ped_ultra_zoom_radio["state"] = "normal"
         root.install_btn["state"] = "normal"
         root.uninstall_btn["state"] = "normal"
@@ -623,13 +623,13 @@ def update_disabled_buttons(disable_all=False):
         root.bigger_minimap_check["state"] = "disabled"
         root.transparent_minimap_check["state"] = "disabled"
         root.no_minimap_border_check["state"] = "disabled"
-        root.veh_low_zoom_radio["state"] = "disabled"
-        root.veh_normal_zoom_radio["state"] = "disabled"
-        root.veh_high_zoom_radio["state"] = "disabled"
+        root.veh_slight_zoom_radio["state"] = "disabled"
+        root.veh_medium_zoom_radio["state"] = "disabled"
+        root.veh_big_zoom_radio["state"] = "disabled"
         root.veh_ultra_zoom_radio["state"] = "disabled"
-        root.ped_low_zoom_radio["state"] = "disabled"
-        root.ped_normal_zoom_radio["state"] = "disabled"
-        root.ped_high_zoom_radio["state"] = "disabled"
+        root.ped_slight_zoom_radio["state"] = "disabled"
+        root.ped_medium_zoom_radio["state"] = "disabled"
+        root.ped_big_zoom_radio["state"] = "disabled"
         root.ped_ultra_zoom_radio["state"] = "disabled"
         root.install_btn["state"] = "normal"
         root.uninstall_btn["state"] = "normal"
@@ -639,13 +639,13 @@ def update_disabled_buttons(disable_all=False):
         root.bigger_minimap_check["state"] = "disabled"
         root.transparent_minimap_check["state"] = "disabled"
         root.no_minimap_border_check["state"] = "disabled"
-        root.veh_low_zoom_radio["state"] = "disabled"
-        root.veh_normal_zoom_radio["state"] = "disabled"
-        root.veh_high_zoom_radio["state"] = "disabled"
+        root.veh_slight_zoom_radio["state"] = "disabled"
+        root.veh_medium_zoom_radio["state"] = "disabled"
+        root.veh_big_zoom_radio["state"] = "disabled"
         root.veh_ultra_zoom_radio["state"] = "disabled"
-        root.ped_low_zoom_radio["state"] = "disabled"
-        root.ped_normal_zoom_radio["state"] = "disabled"
-        root.ped_high_zoom_radio["state"] = "disabled"
+        root.ped_slight_zoom_radio["state"] = "disabled"
+        root.ped_medium_zoom_radio["state"] = "disabled"
+        root.ped_big_zoom_radio["state"] = "disabled"
         root.ped_ultra_zoom_radio["state"] = "disabled"
         root.install_btn["state"] = "disabled"
         root.uninstall_btn["state"] = "normal"
@@ -747,8 +747,8 @@ def setup_gui():
         pady=5
     )
     # Vehicle zoom
-    root.veh_zoom_var = tk.StringVar(None, "normal")
-    root.veh_low_zoom_radio = ttk.Radiobutton(
+    root.veh_zoom_var = tk.StringVar(None, "default")
+    root.veh_slight_zoom_radio = ttk.Radiobutton(
         root,
         text="Slight Veh Zoom Out",
         variable=root.veh_zoom_var,
@@ -756,14 +756,14 @@ def setup_gui():
         state="disabled",
         takefocus=False
     )
-    root.veh_low_zoom_radio.grid(
+    root.veh_slight_zoom_radio.grid(
         column=2,
         row=1,
         padx=10,
         pady=5,
         sticky="w"
     )
-    root.veh_normal_zoom_radio = ttk.Radiobutton(
+    root.veh_medium_zoom_radio = ttk.Radiobutton(
         root,
         text="Medium Veh Zoom Out",
         variable=root.veh_zoom_var,
@@ -771,14 +771,14 @@ def setup_gui():
         state="disabled",
         takefocus=False
     )
-    root.veh_normal_zoom_radio.grid(
+    root.veh_medium_zoom_radio.grid(
         column=2,
         row=2,
         padx=10,
         pady=5,
         sticky="w"
     )
-    root.veh_high_zoom_radio = ttk.Radiobutton(
+    root.veh_big_zoom_radio = ttk.Radiobutton(
         root,
         text="Big Veh Zoom Out",
         variable=root.veh_zoom_var,
@@ -786,7 +786,7 @@ def setup_gui():
         state="disabled",
         takefocus=False
     )
-    root.veh_high_zoom_radio.grid(
+    root.veh_big_zoom_radio.grid(
         column=2,
         row=3,
         padx=10,
@@ -809,8 +809,8 @@ def setup_gui():
         sticky="w"
     )
     # Ped zoom
-    root.ped_zoom_var = tk.StringVar(None, "normal")
-    root.ped_low_zoom_radio = ttk.Radiobutton(
+    root.ped_zoom_var = tk.StringVar(None, "default")
+    root.ped_slight_zoom_radio = ttk.Radiobutton(
         root,
         text="Slight On-Foot Zoom Out",
         variable=root.ped_zoom_var,
@@ -818,14 +818,14 @@ def setup_gui():
         state="disabled",
         takefocus=False
     )
-    root.ped_low_zoom_radio.grid(
+    root.ped_slight_zoom_radio.grid(
         column=3,
         row=1,
         padx=10,
         pady=5,
         sticky="w"
     )
-    root.ped_normal_zoom_radio = ttk.Radiobutton(
+    root.ped_medium_zoom_radio = ttk.Radiobutton(
         root,
         text="Medium On-Foot Zoom Out",
         variable=root.ped_zoom_var,
@@ -833,14 +833,14 @@ def setup_gui():
         state="disabled",
         takefocus=False
     )
-    root.ped_normal_zoom_radio.grid(
+    root.ped_medium_zoom_radio.grid(
         column=3,
         row=2,
         padx=10,
         pady=5,
         sticky="w"
     )
-    root.ped_high_zoom_radio = ttk.Radiobutton(
+    root.ped_big_zoom_radio = ttk.Radiobutton(
         root,
         text="Big On-Foot Zoom Out",
         variable=root.ped_zoom_var,
@@ -848,7 +848,7 @@ def setup_gui():
         state="disabled",
         takefocus=False
     )
-    root.ped_high_zoom_radio.grid(
+    root.ped_big_zoom_radio.grid(
         column=3,
         row=3,
         padx=10,
